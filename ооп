@@ -31,14 +31,42 @@ class Student:
                 lecturer.grades[course] = [grade]
         else:
             return 'Ошибка'
+          
+    def __eg__(self, other):
 
-    def __lt__(self, other):
+        if not isinstance(other, Student):
+            print('Такое сравнение некорректно')
+            return
+        return self.average_rating == other.average_rating    
+
+    def __gt__(self, other):
 
         if not isinstance(other, Student):
             print('Такое сравнение некорректно')
             return
         return self.average_rating < other.average_rating
 
+    def __gte__(self, other):
+
+        if not isinstance(other, Student):
+            print('Такое сравнение некорректно')
+            return
+        return self.average_rating >= other.average_rating
+      
+      
+    def __lt__(self, other):
+
+        if not isinstance(other, Student):
+            print('Такое сравнение некорректно')
+            return
+        return self.average_rating < other.average_rating
+    
+    def __lte__(self, other):
+
+        if not isinstance(other, Student):
+            print('Такое сравнение некорректно')
+            return
+        return self.average_rating <= other.average_rating
 
 class Mentor:
 
@@ -65,13 +93,41 @@ class Lecturer(Mentor):
         res = f'Имя: {self.name}\nФамилия: {self.surname}\nСредняя оценка за лекции: {round(self.average_rating,1)}'
         return res
 
+    def __eq__(self, other):
+
+        if not isinstance(other, Lecturer):
+            print('Такое сравнение некорректно')
+            return
+        return self.average_rating == other.average_rating  
+
+    def __gt__(self, other):
+
+        if not isinstance(other, Lecturer):
+            print('Такое сравнение некорректно')
+            return
+        return self.average_rating > other.average_rating
+
+    def __gte__(self, other):
+
+        if not isinstance(other, Lecturer):
+            print('Такое сравнение некорректно')
+            return
+        return self.average_rating >= other.average_rating
+      
     def __lt__(self, other):
 
         if not isinstance(other, Lecturer):
             print('Такое сравнение некорректно')
             return
         return self.average_rating < other.average_rating
+    
+    def __lte__(self, other):
 
+        if not isinstance(other, Lecturer):
+            print('Такое сравнение некорректно')
+            return
+        return self.average_rating <= other.average_rating
+   
 class Reviewer(Mentor):
 
     def rate_hw(self, student, course, grade):
